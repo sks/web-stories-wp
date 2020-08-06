@@ -31,7 +31,7 @@ import {
   TEMPLATES_GALLERY_STATUS,
 } from '../../../../constants';
 
-describe('CUJ: Creator can browse templates in grid view', () => {
+fdescribe('CUJ: Creator can browse templates in grid view', () => {
   let fixture;
 
   beforeEach(async () => {
@@ -268,16 +268,16 @@ describe('CUJ: Creator can browse templates in grid view', () => {
     });
   });
 
-  describe('Action: See template preview from detail template view', () => {
+  fdescribe('Action: See template preview from detail template view', () => {
     beforeEach(async () => {
       fixture.setFlags({ enableTemplatePreviews: true });
 
       await fixture.render();
     });
 
-    it('should trigger template preview when user clicks a related template', async () => {
-      await getTemplatesState();
-
+    fit('should trigger template preview when user clicks a related template', async () => {
+      // await getTemplatesState();
+      debugger;
       const relatedTemplatesSection = await fixture.screen.getByRole('region', {
         name: /Related Templates/,
       });
