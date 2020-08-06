@@ -33,9 +33,13 @@ import {
 
 describe('CUJ: Creator can browse templates in grid view: See pre-built template details page', () => {
   let fixture;
+  let enableTemplatePreviews = false;
 
   beforeEach(async () => {
     fixture = new Fixture();
+
+    fixture.setFlags({ enableTemplatePreviews });
+
     await fixture.render();
 
     await navigateToFirstTemplate();
@@ -266,16 +270,10 @@ describe('CUJ: Creator can browse templates in grid view: See pre-built template
     expect(nextTemplateTitle.innerText).toEqual(nextTemplate.title);
   });
 
-  fdescribe('Action: See template preview from detail template view', () => {
-    beforeEach(async () => {
-      fixture.setFlags({ enableTemplatePreviews: true });
+  describe('Action: See template preview from detail template view', () => {
+    enableTemplatePreviews = true;
 
-      await fixture.render();
-    });
-
-    fit('should trigger template preview when user clicks a related template', async () => {
-      // await getTemplatesState();
-      debugger;
+    it('should trigger template preview when user clicks a related template', async () => {
       const relatedTemplatesSection = await fixture.screen.getByRole('region', {
         name: /Related Templates/,
       });
@@ -301,7 +299,6 @@ describe('CUJ: Creator can browse templates in grid view: See pre-built template
     });
 
     it('should trigger template preview when user presses Enter while focused on a card', async () => {
-      await getTemplatesState();
       const relatedTemplatesSection = fixture.screen.getByRole('region', {
         name: /Related Templates/,
       });
