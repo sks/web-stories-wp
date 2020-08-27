@@ -40,10 +40,10 @@ export const STORY_CONTEXT_MENU_ITEMS = [
     value: STORY_CONTEXT_MENU_ACTIONS.PREVIEW,
     inProgress: true,
   },
-  { label: null, value: false, separator: true },
   {
     label: __('Rename', 'web-stories'),
     value: STORY_CONTEXT_MENU_ACTIONS.RENAME,
+    separator: 'top',
   },
   {
     label: __('Duplicate', 'web-stories'),
@@ -54,10 +54,10 @@ export const STORY_CONTEXT_MENU_ITEMS = [
     value: STORY_CONTEXT_MENU_ACTIONS.CREATE_TEMPLATE,
     inProgress: true,
   },
-  { label: null, value: false, separator: true },
   {
     label: __('Delete Story', 'web-stories'),
     value: STORY_CONTEXT_MENU_ACTIONS.DELETE,
+    separator: 'top',
   },
 ];
 
