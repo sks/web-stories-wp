@@ -78,7 +78,7 @@ function PagePreview({ index, gridRef, ...props }) {
   }));
   const page = pages[index];
   const { backgroundColor } = page;
-  const { width: thumbWidth, height: thumbHeight, isActive } = props;
+  const { width: thumbWidth, height: thumbHeight, isActive, ariaLabel } = props;
   const width = thumbWidth - THUMB_FRAME_WIDTH;
   const height = thumbHeight - THUMB_FRAME_HEIGHT;
   const [tabIndex, setTabIndex] = useState(isActive ? 0 : -1);
@@ -96,7 +96,13 @@ function PagePreview({ index, gridRef, ...props }) {
   return (
     <UnitsProvider pageSize={{ width, height }}>
       <TransformProvider>
-        <Page tabIndex={tabIndex} onBlur={onBlur} onFocus={onFocus} {...props}>
+        <Page
+          tabIndex={tabIndex}
+          onBlur={onBlur}
+          onFocus={onFocus}
+          aria-label={ariaLabel}
+          {...props}
+        >
           <PreviewWrapper background={backgroundColor}>
             {page.elements.map(({ id, ...rest }) => (
               <DisplayElement
@@ -114,6 +120,7 @@ function PagePreview({ index, gridRef, ...props }) {
 }
 
 PagePreview.propTypes = {
+  ariaLabel: PropTypes.string.isRequired,
   index: PropTypes.number.isRequired,
   width: PropTypes.number.isRequired,
   height: PropTypes.number.isRequired,
